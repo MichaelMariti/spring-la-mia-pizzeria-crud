@@ -47,6 +47,10 @@ public class Pizza {
         return prezzo;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
 
     // Setters
     public void setNome(String nome) {
