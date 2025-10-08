@@ -17,10 +17,17 @@
     <nav th:replace="~{fragments/navbar :: navbar('Pizzas')}"></nav>
     <div class="container">
 
+        <th:block th:if="${successMessage != null}">
+            <div class="alert alert-success alert-dismissable fade show" role="alert">
+                <span th:text="${successMessage}"></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+        </th:block>
         <h1 class="text-center py-3">Pizzas</h1>
         <hr>
 
         <div class="d-flex justify-content-between mb-3">
+            <a th:href="@{/pizzas/create}" class="btn btn-primary">Add new Pizza</a>
             <form method="get" th:action="@{/pizzas/index}" class="d-flex">
 
                 <input name="keyword" type="search" class="form-control" placeholder="Search" aria-label="Search">

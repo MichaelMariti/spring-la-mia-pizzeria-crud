@@ -1,10 +1,14 @@
 package it.springpizzeriacrud.spring_la_mia_pizzeria_crud.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pizzas")
@@ -14,9 +18,21 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotNull
+    @NotBlank(message="Name is mandatory")
+    @Column(unique=true)
     private String nome;
+
+    @NotNull
+    @NotBlank(message="Description is mandatory")
     private String descrizione;
+
+    @NotNull
+    @NotBlank(message="Photo is mandatory")
     private String photoUrl;
+
+    @NotNull
+    @Min(value = 0)
     private double prezzo;
 
     // Costruttori
